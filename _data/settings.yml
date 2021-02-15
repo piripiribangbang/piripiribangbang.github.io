@@ -1,16 +1,16 @@
 #-------------------------------
 # General Site Settings
-title: Zolan
+title: 피리의 스터디
 logo: logo.svg # You can add own logo.
-description: Zolan is modern minimal theme for Jekyll
+description: "piri's study"
 
 
 #-------------------------------
 # Author Settings
 author:
-  name: Alex Rodriguez
-  image: 01.jpg
-  say-hello: Hello, I’m <strong>Alex Rodriguez</strong>
+  name: piri
+  image: 
+  say-hello: Hello, I’m <strong>piri</strong>
   bio: Designs, talks, and writes about <strong>web</strong>, <strong>ethics</strong>, <strong>privacy</strong>, and dev. I share design tutorials, free resources and inspiration. Loves <a href="#">music</a> & riding his bicycle.
 
 
@@ -25,7 +25,7 @@ pinterest: https://pinterest.com/ # Add your Pinterest handle
 
 #-------------------------------
 # Comment Section (Disqus)
-disqus-identifier: mr-brown # add your shortname for Disqus Comment. For example mr-brown
+disqus-identifier: piri # add your shortname for Disqus Comment. For example mr-brown
 
 
 #-------------------------------
@@ -36,7 +36,7 @@ instagram-profile: artemsheludko_ # Add instagram username
 
 #-------------------------------
 # Google Analytics
-google-analytics: # Add your identifier. For example UA-99631805-1.
+google-analytics: G-VGZDVWEJFB # Add your identifier. For example UA-99631805-1.
 
 
 #-------------------------------
