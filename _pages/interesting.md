@@ -1,7 +1,7 @@
----
+﻿---
 layout: page
-title: Style Guide
-permalink: /styleguide/
+title: Interesting
+permalink: /interesting/
 image: 08.jpg
 ---
 
