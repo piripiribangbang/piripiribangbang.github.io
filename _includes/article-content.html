@@ -1,22 +1,24 @@
-{% assign without-image = nil %}
+{% assign without-image = nil %}   {% comment %} <!-- without-image 변수를 정의하고 아무 값도 없다는 뜻인 nil을 대입 --> {% endcomment %}
 <!-- begin article -->
 <div class="article">
   <div class="container">
 
     <div class="article__wrapper">
 
-        {% if post.image %}
+        {% if post.image %}   {% comment %} <!-- 만약 post.image (post에 이미지가 들어있다면)가 존재한다면, 여기서 post는 index.html 내 paginator.posts (현재 페이지의 포스트들) 중 1개가 됨 --> {% endcomment %}
+          {% comment %} <!-- 그럼 이동할 위치 링크는 site.baseurl (_config.yml 에 설정한 사이트의 url. 뒤이어서 /post.url (post 파일이 설정된 url) 이 붙어서 나오게 됨--> {% endcomment %}
+          {% comment %} <!-- 그리고 링크의 style은 이미지 url의 이미지를 배경으로 하도록 만들어, 이미지를 누르면 링크 위치로 이동하도록 만듦--> {% endcomment %}
           <a href="{{post.url | prepend: site.baseurl}}" class="article__image" style="background-image: url({{site.baseurl}}/images/{{post.image}})">
           </a>
-        {% else %}
+        {% else %}   {% comment %} <!-- 만약 post.image가 없다면 without-image 변수에 'article-without-image' 값을 넣도록 함 --> {% endcomment %}
           {% assign without-image = 'article-without-image' %}
         {% endif %}
 
-        <div class="article__content {{ without-image }}">
+        <div class="article__content {{ without-image }}">   {% comment %} <!-- 이미지가 있냐 없냐에 따라 class를 다르게 두었음 --> {% endcomment %}
           <div class="article-tags">
-          {% if post.tags.size >= 1 %}
+          {% if post.tags.size >= 1 %}   {% comment %} <!-- 만약 그 post 내용에서 tags의 크기가 1 이상이면 article-tages__box 클래스도 사용 --> {% endcomment %}
             <div class="article-tags__box">
-              {% for tag in post.tags %}
+              {% for tag in post.tags %}   {% comment %} <!-- post 내 tags 항목 들을 하나씩 반복해서, https://piripiribangbang.github.io/tag/Resources 요런식으로 링크 만듦 --> {% endcomment %}
                 <a href="{{ site.baseurl }}/tag/{{ tag }}" class="article__tag">{{ tag }}</a>
               {% endfor %}
             </div>
@@ -24,17 +26,21 @@
           {% endif %}
           </div>
       
-          <h2 class="article__title">
+          <h2 class="article__title">   {% comment %} <!-- h2 태그로 post의 제목 표기 --> {% endcomment %}
             <a href="{{ post.url | prepend: site.baseurl }}">{{post.title}}</a>
           </h2>
-      
+          
+          {% comment %} <!-- post 제목 아래 내용 발췌는, post에 description이 있다면 그 내용을 사용. 아니라면 post의 content(전역변수?)에서 html 표기를 제외하고 글자만으로 185 characters만 표기 --> {% endcomment %}
           <p class="article__excerpt">{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | truncate: 185 }}{% endif %}</p>
           
-          <div class="article__footer">
+          <div class="article__footer">   {% comment %} <!-- post(기사) 내용 밑에 있는 날짜와 Keep Reading 부분 --> {% endcomment %}
             <div class="article__meta">
+              {% comment %} <!-- post의 날짜를 XML 스키마 (ISO 8601) 형식으로 변환, The datetime attribute represent a machine-readable format of a <time> element. --> {% endcomment %}
+              {% comment %} <!-- date_format 변수에는 site.minima.date_format 값이 default 형태로 대입. 그 date_format 값을 article에 표시하게 됨  --> {% endcomment %}
               <span class="article__date"><time datetime="{{ post.date | date_to_xmlschema }}">{% assign date_format = site.minima.date_format | default: "%B %-d, %Y" %}{{ post.date | date: date_format }}</time></span>
             </div>
 
+            {% comment %} <!-- 해당 post 링크가 Keep Reading을 누르면 연결됨. 그리고 Keep Reading 옆에 '>' 형태 아이콘을 위한 i 태그도 포함됨  --> {% endcomment %}
             <a href="{{post.url | prepend: site.baseurl}}" class="read-more">Keep Reading <i class="ion ion-ios-arrow-forward"></i></a>
           </div>
 
