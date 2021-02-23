@@ -1,7 +1,10 @@
+{% comment %} <!-- 메인 페이지 자기소개 밑에 SNS 링크 집어넣는 부분임 --> {% endcomment %}
+{% comment %} <!-- 여기 상위 태그에는 class="hero__social" 그리고 class="hero__social-title" Follow Me 가 있음 --> {% endcomment %}
 <div class="contact">
   <ul class="contact__list list-reset">
-    {% if site.data.settings.twitter %}
-      <li><a href="{{ site.data.settings.twitter }}"><i class="ion ion-logo-twitter"></i></a></li>
+    {% if site.data.settings.twitter %}   {% comment %} <!-- site.data는 _data 디렉토리에 있는 YAML 파일에서 읽어들인 데이터 목록.
+      여기서 setting.yml 파일 내 contact links를 보면 트위터, 페북, 드리블, 인스타, 핀터 순으로 링크 주소 있음 --> {% endcomment %}
+      <li><a href="{{ site.data.settings.twitter }}"><i class="ion ion-logo-twitter"></i></a></li> {% comment %} <!-- 트위터 아이콘 class가 이런가 봄 --> {% endcomment %}
     {% else %} {% endif %}
 
     {% if site.data.settings.facebook %}
