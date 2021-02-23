@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col col-12">
-      <!-- begin header -->
+      <!-- begin header -->   {% comment %} <!-- header는 웹페이지에서 상단 영역 --> {% endcomment %}
       <header class="header">
 
-        <div class="logo">
-          <a class="logo__link" href="{{site.baseurl}}/">
-          {%if site.data.settings.logo %}
+        <div class="logo">   {% comment %} <!-- 로고 꾸미기. site.baseurl은 공백임 --> {% endcomment %}
+          <a class="logo__link" href="{{site.baseurl}}/">   
+          {%if site.data.settings.logo %}   {% comment %} <!-- 만약 로고 파일이 있다면, images 폴더에서 불러옴. 없으면 그냥 site title 표시하는 듯 --> {% endcomment %}
             <img class="logo__image" src="{{ site.baseurl }}/images/{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
           {% else %}
             {{ site.data.settings.title }}
@@ -14,24 +14,24 @@
           </a>
         </div>
 
-        <nav class="main-nav">
+        <nav class="main-nav">   {% comment %} <!-- nav 태그는 사이트에서 네비게이션 역할을 하는 주요 링크 그룹 담을 때 사용. header나 article 태그 내에 옴 --> {% endcomment %}
 
           <div class="main-nav__box">
             <div class="nav-icon__close">
-              <i class="ion ion-ios-close-circle-outline"></i>
+              <i class="ion ion-ios-close-circle-outline"></i>   {% comment %} <!-- 얘는 페이지 작으면 검색 옆 줄4개짜리 메뉴 아이콘에서 메뉴 끌 때 사용하는 동그라미 안에 X표 아이콘 --> {% endcomment %}
             </div>
 
-            <div class="nav__title">Menu</div>
+            <div class="nav__title">Menu</div>   {% comment %} <!-- 얘는 페이지 작으면 검색 옆 줄 4개짜리 누르면 나오는 메뉴 --> {% endcomment %}
 
             <ul class="nav__list list-reset">
               <li class="nav__item">
-                <a href="{{site.baseurl}}/" class="nav__link">Home</a>
+                <a href="{{site.baseurl}}/" class="nav__link">Home</a>   {% comment %} <!-- Home 글자에 대한 링크 --> {% endcomment %}
               </li>
-              {% for page in site.pages %}
-                {% unless page.name == 'tags.html' or page.name == '404.html' %}
-              {% if page.title %}
+              {% for page in site.pages %}   {% comment %} <!-- site.pages는 모든 페이지 목록. 지금 _pages 폴더 내 md파일로 3개(interesting, study, travel)가 있음 --> {% endcomment %}
+                {% unless page.name == 'tags.html' or page.name == '404.html' %}   {% comment %} <!-- 만약 페이지 이름이 tags.html이나 404.html이 아니라면 --> {% endcomment %}
+              {% if page.title %}   {% comment %} <!-- 만약 page에 title이 있다면 --> {% endcomment %}
               <li class="nav__item">
-                <a href="{{ page.url | prepend: site.baseurl }}" class="nav__link">{{ page.title }}</a>
+                <a href="{{ page.url | prepend: site.baseurl }}" class="nav__link">{{ page.title }}</a>   {% comment %} <!-- nav 목록에 링크 설정하기. page.url은 md에서 permalink로 지정함 --> {% endcomment %}
               </li>
               {% endif %}
                 {% endunless %}
@@ -41,8 +41,8 @@
           </div>
         </nav>
 
-        <div class="nav-buttons">
-          <i class="nav__icon nav__icon-menu ion ion-md-menu" aria-label="Menu Icon"></i>
+        <div class="nav-buttons">   {% comment %} <!-- 오른쪽에 메뉴 아이콘이랑 검색 아이콘 넣는 부분 --> {% endcomment %}
+          <i class="nav__icon nav__icon-menu ion ion-md-menu" aria-label="Menu Icon"></i>   {% comment %} <!-- 사이트 크기가 감소하면 </i> 앞에 ::before(요소 시작부분에 컨텐츠 추가)이 생김 --> {% endcomment %}
           <i class="nav__icon nav__icon-search ion ion-md-search" aria-label="Search Icon"></i>
         </div>
 
