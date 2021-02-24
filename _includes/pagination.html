@@ -1,40 +1,40 @@
-<nav class="pagination">
+<nav class="pagination">   {% comment %} <!-- article 아래쪽에 현재 page나 전체 page 몇개인지 등 보여주는 부분 담당 --> {% endcomment %}
   <div class="container">
     <div class="pagination__list">
 
-      {% if paginator.previous_page %}
+      {% if paginator.previous_page %}   {% comment %} <!-- 만약 이전 페이지 번호가 있으면(Prev Posts를 눌러 이전 페이지로 돌아가는 기능) --> {% endcomment %}
       
-      {% if paginator.previous_page == 1 %}
+      {% if paginator.previous_page == 1 %}   {% comment %} <!-- 만약 이전 페이지 번호가 1이라면, Prev Posts를 눌러 site.baseurl 링크로 이동 --> {% endcomment %}
         <a class="previous-link" href="{{ site.baseurl }}/">Prev Posts</a>
-      {% else %}
-        <a class="previous-link" href="{{ site.baseurl }}/page/{{ paginator.previous_page }}/">Prev Posts</a>
+      {% else %}   {% comment %} <!-- 만약 이전 페이지 번호가 1이 아니면 --> {% endcomment %}
+        <a class="previous-link" href="{{ site.baseurl }}/page/{{ paginator.previous_page }}/">Prev Posts</a>   {% comment %} <!-- 만약 3페이지라면 https://piripiribangbang.github.io/page/2/ 로 이동됨 --> {% endcomment %}
       {% endif %}
       
-      {% else %}
+      {% else %}   {% comment %} <!-- 만약 이전 페이지 번호가 없으면 (지금이 1페이지?) class="disabled"로 선택할 수 없게끔 함 --> {% endcomment %}
         <span class="disabled">Prev Posts</span>
       {% endif %}
 
-      <div class="counter-box">
-        {% if paginator.page == 1 %}
+      <div class="counter-box">   {% comment %} <!-- 가운데 1 2 3... 하는 box --> {% endcomment %}
+        {% if paginator.page == 1 %}   {% comment %} <!-- 만약 지금 1페이지면 active-link class에 해당하는 것은 1 --> {% endcomment %}
           <span class="active-link">1</span>
         {% else %}
-          <a href="{{ site.baseurl }}/">1</a>
+          <a href="{{ site.baseurl }}/">1</a>   {% comment %} <!-- 지금 1페이지가 아니면, 1을 눌렀을 때 기본 페이지로 돌아가도록 함 --> {% endcomment %}
         {% endif %}
 
 
-        {% for count in (2..paginator.total_pages) %}
+        {% for count in (2..paginator.total_pages) %}   {% comment %} <!-- 페이지가 2부터 전체 페이지 수 까지는 count로 반복해서 --> {% endcomment %}
 
         {% if count == paginator.page %}
-          <span class="active-link">{{ count }}</span>
-        {% else %}
+          <span class="active-link">{{ count }}</span>   {% comment %} <!-- 만약 count가 현재 페이지 수와 같으면, active link로 진한색깔 됨 --> {% endcomment %}
+        {% else %}   {% comment %} <!-- 만약 count가 현재 페이지 수와 다르면, count-number class로 해당 페이지로 이동할 수 있는 링크와 꾸밈 적용 --> {% endcomment %}
           <a class="count-number" href="{{ site.baseurl }}/page/{{ count }}/">{{ count }}</a>
         {% endif %}
         {% endfor %}
       </div>
 
-      {% if paginator.next_page %}
+      {% if paginator.next_page %}   {% comment %} <!-- 만약 현재 페이지에서 다음 페이지가 존재한다면, Next Posts를 누를 때 다음 페이지로 이동하도록 만듦 --> {% endcomment %}
       <a class="next-link" href="{{ site.baseurl }}/page/{{ paginator.next_page }}/">Next Posts</a>
-      {% else %}
+      {% else %}   {% comment %} <!-- 지금이 마지막 페이지라면 Next Posts는 누를 수 없게 됨 --> {% endcomment %}
         <span class="disabled">Next Posts</span>
       {% endif %}
 
