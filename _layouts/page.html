@@ -2,15 +2,15 @@
 layout: default
 ---
 <div class="container">
-	<div class="page-title-box">
+	<div class="page-title-box">   {% comment %} <!-- 페이지/포스트 제목 꾸미는 기능. 어떻게 메인 페이지 말고 다른 페이지에서만 나타나게 되는거지?? --> {% endcomment %}
 		<div class="row">
 			<div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-				<h1 class="page-title">{{ page.title | escape }}</h1>
+				<h1 class="page-title">{{ page.title | escape }}</h1>   {% comment %} <!-- h1 태그로 page의 title 표시 (escape html로) --> {% endcomment %}
 			</div>
 		</div>
 	</div>
 
-	{% if page.image %}
+	{% if page.image %}   {% comment %} <!-- 만약 page or post에 이미지가 있다면, 이미지 불러와서 표시되게 함 --> {% endcomment %}
 	<div class="page__head">
 		<div class="page-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
 	</div>
@@ -21,9 +21,9 @@ layout: default
 <div class="container">
 	<div class="row">
 		<!-- begin page -->
-		<article class="page col col-8 col-t-10 col-m-12">
+		<article class="page col col-8 col-t-10 col-m-12">   {% comment %} <!-- 사진 밑에 글씨 쓰는 공간 꾸미기 위함. 해당 문서나 페이지 또는 사이트와는 완전히 독립적으로 구성할 수 있는 요소를 정의할 때 사용 --> {% endcomment %}
 			<div class="page__content">
-				{{ content }}
+				{{ content }}   {% comment %} <!-- 아마도 post에서 md 파일의 content를 표시하도록 하는게 아닌가??
 			</div>
 		</article>
 		<!-- end page -->
