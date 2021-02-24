@@ -1,29 +1,29 @@
-<!DOCTYPE html>
+<!DOCTYPE html>   {% comment %} <!-- default.html은 '전체 페이지에서 공통'인 기본 뼈대를 보여주는 듯 함 --> {% endcomment %}
 <html lang="en">
 
-{% include head.html %}
+{% include head.html %}   {% comment %} <!-- 블로그 동작에 필요한 head.html을 이 부분에 포함 --> {% endcomment %}
 
-<body>
+<body>   {% comment %} <!-- body 내에서 정의되는 부분 --> {% endcomment %}
 
-  {% if site.data.settings.google-analytics %}
+  {% if site.data.settings.google-analytics %}   {% comment %} <!-- google-analytics 사용이 필요하면, google-analytics.html을 body 앞 부분에 포함 --> {% endcomment %}
   {% include google-analytics.html %}
   {% endif %}
 
-  {% include header.html %}
+  {% include header.html %}   {% comment %} <!-- 모든 페이지에서 공통인 페이지의 상단부 디자인 및 동작을 위해 header.html 포함--> {% endcomment %}
 
   <!-- begin content -->
-  <main class="content" aria-label="Content">
-    {{ content }}
+  <main class="content" aria-label="Content">   {% comment %} <!-- 레이아웃 파일 내, 포스트 또는 페이지로 감싸진 렌더링된 컨텐츠. 포스트나 페이지 파일에는 정의되어 있지 않음
+  우리 눈에 보이지 않더라도 브라우저에게는 전달이 되면 좋은 정보, 혹은 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야 하는 정보를 제공하고 싶을 때 사용하는 게 aria-label --> {% endcomment %}    {{ content }}
   </main>
   <!-- end content -->
 
-  <div class="top ion ion-ios-arrow-up" title="Top"></div>
+  <div class="top ion ion-ios-arrow-up" title="Top"></div>   {% comment %} <!-- 페이지 스크롤 내릴 때 페이지 맨 꼭대기로 올라가는 메뉴 아이콘 ^ 모양 --> {% endcomment %}
 
-  {% include search.html %}
+  {% include search.html %}   {% comment %} <!-- 검색 기능을 넣도록 search.html 포함(모든 페이지에 필요) --> {% endcomment %}
 
-  {% include footer.html %}
+  {% include footer.html %}   {% comment %} <!-- 모든 페이지 하단 부 기능을 위해 footer.html 포함 --> {% endcomment %}
 
-  {% include javascripts.html %}
+  {% include javascripts.html %}   {% comment %} <!-- 자바스크립트 기능을 사용하기 위해 javascript.html 포함 --> {% endcomment %}
 </body>
 
 </html>
