@@ -1,12 +1,14 @@
 ---
-layout: default
+layout: default   {% comment %} <!-- _layout 폴더에서 default.html을 사용한다는 것을 의미함! --> {% endcomment %}
 ---
-{% include hero.html %}
+{% comment %} <!-- index.html은 블로그 메인페이지라고 볼 수 있음 --> {% endcomment %}
+
+{% include hero.html %}   {% comment %} <!-- 블로그 자기 소개를 위한 hero.html 포함 --> {% endcomment %}
 
 <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			{% if site.posts.size > 0 %}
+			{% if site.posts.size > 0 %}   {% comment %} <!-- 만약 블로그에 포스트가 존재한다면, Latest Posts 항목을 만들어 아래 포스트 모음을 준비 --> {% endcomment %}
 				<h4 class="lates-title">Latest Posts</h4>
 			{% endif %}
 		</div>
@@ -15,11 +17,11 @@ layout: default
 
 <div class="container">
 	<div class="row">
-	{% if site.posts.size > 0 %}
+	{% if site.posts.size > 0 %}   {% comment %} <!-- 만약 블로그에 포스트가 존재한다면, 전체 포스트에 대해서 article-content.html 형태로 정리함 --> {% endcomment %}
 		{% for post in paginator.posts %}
 			{% include article-content.html %}
 		{% endfor %}
 	{% endif %}
 	</div>
 </div>
-{% include pagination.html %}
+{% include pagination.html %}   {% comment %} <!-- 그리고 제일 아래 pagination(페이지 옮김) 기능이 구현된 pagination.html 포함 --> {% endcomment %}
