@@ -1,17 +1,17 @@
-<!-- begin search -->
+<!-- begin search -->   {% comment %} <!-- 검색 돋보기 아이콘 누르면 나오는 창에 대한 정리 --> {% endcomment %}
 <div class="search">
   <div class="container">
     <div class="row">
       <div class="col col-12">
-        <div class="search__box">
-          <div class="search__group">
+        <div class="search__box">   {% comment %} <!-- 검색 부분이랑 결과 부분을 보여주는 box 크기 설정을 위해 넣은듯 --> {% endcomment %}
+          <div class="search__group">   {% comment %} <!-- 검색 부분에 대한 것 --> {% endcomment %}
             <div class="search__close">
-              <i class="ion ion-ios-close-circle-outline"></i>
+              <i class="ion ion-ios-close-circle-outline"></i>   {% comment %} <!-- 검색창 종료 버튼 아이콘 --> {% endcomment %}
             </div>
-            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>   {% comment %} <!-- label은 form의 양식에 이름을 붙이는 태그, for의 값과 input의 id 값이 일치하면 연결됨 --> {% endcomment %}
             <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search">
           </div>
-          <ul id="js-results-container" class="search-results-list"></ul>
+          <ul id="js-results-container" class="search-results-list"></ul>   {% comment %} <!-- 검색 결과 목록으로 표시. simple-jekyll-search.min.js 파일 이용 위해 필요한 id 인듯...? --> {% endcomment %}
         </div>
       </div>
     </div>
