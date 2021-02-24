@@ -1,23 +1,23 @@
 ---
 layout: default
 ---
-<div class="container">
+<div class="container">   {% comment %} <!-- 이게 진짜 모든 포스트의 기본 템플릿을 만든 것 같음. page랑 post는 다른 게 맞는 듯 --> {% endcomment %}
   <div class="post-title-box">
     <div class="row">
       <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-        <span class="post__date">
+        <span class="post__date">   {% comment %} <!-- post 날짜를 XML 스키마 형식으로 변환하고 그 페이지의 날짜를 월,일,년 포맷으로 표시 --> {% endcomment %}
           <time datetime="{{ page.date | date_to_xmlschema }}">{{page.date | date: '%b %d, %Y'}}</time>
         </span>
 
-        <h1 class="post-title">{{ page.title | escape }}</h1>
+        <h1 class="post-title">{{ page.title | escape }}</h1>   {% comment %} <!-- 포스트 제목을 h1 태그로 escape html로 표현되도록 함 --> {% endcomment %}
 
-        <div class="post__info">
+        <div class="post__info">   {% comment %} <!-- 포스트를 쓴 저자, 태그 정보를 관리 --> {% endcomment %}
           <div class="post__author">
             <span>By</span>
-            <a href="{{ site.baseurl }}/about/" class="author-name">{{site.data.settings.author.name}}</a>
+            <a href="{{ site.baseurl }}/about/" class="author-name">{{site.data.settings.author.name}}</a>   {% comment %} <!-- 원본에는 about으로 저자 소개 페이지가 있어서 거기로 가게끔 url 설정. but 지금은 404.html page not found로 뜸 --> {% endcomment %}
           </div>
 
-          {% if page.tags.size >= 1 %}
+          {% if page.tags.size >= 1 %}   {% comment %} <!-- 만약 페이지에 태그가 1개 이상 있다면, 태그마다 링크 걸기 (지금은 누르면 page not found 임) --> {% endcomment %}
           <div class="post__tags">
             {% for tag in page.tags %}
               <a href="{{ site.baseurl }}/tag/{{ tag }}" class="post__tags-tag">{{ tag }}</a>
@@ -30,11 +30,11 @@ layout: default
   </div>
 
   {% assign no-image = nil %}
-  {% if page.image %}
+  {% if page.image %}   {% comment %} <!-- 만약 페이지(포스트)에 이미지가 있다면, 이미지 보이게 함 --> {% endcomment %}
     <div class="post__head">
       <div class="post-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
     </div>
-  {% else %}
+  {% else %}   {% comment %} <!-- 만약 페이지(포스트)에 이미지가 없다면, no-image에 'post-no-image'를 대입 --> {% endcomment %}
     {% assign no-image = 'post-no-image' %}
   {% endif %}
 
@@ -46,13 +46,13 @@ layout: default
     <!-- begin post -->
     <article class="post {{ no-image }} col col-8 col-t-10 col-m-12">
 
-      <div class="post__content">
+      <div class="post__content">   {% comment %} <!-- 포스트 내용만 들어가는 영역을 만듦 --> {% endcomment %}
         {{ content }}
       </div>
 
-      <div class="post__share">
+      <div class="post__share">   {% comment %} <!-- 읽은 포스트를 SNS로 공유할 수 있는 부분 만듦 --> {% endcomment %}
         <span class="share__title">Share this article:</span>
-        <ul class="share__list list-reset">
+        <ul class="share__list list-reset">    {% comment %} <!-- SNS 아이콘 눌러서 로그인하면 post를 공유할 수 있는  --> {% endcomment %}
           <li class="share__item">
             <a class="share__facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}"
               onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
@@ -82,9 +82,9 @@ layout: default
     </div>
   </div>
 
-  <div class="container">
+  <div class="container">   {% comment %} <!-- 포스트 내에서 이전, 이후 포스트로 연결되는 부분 담당 --> {% endcomment %}
   <div class="post__navigation">
-    {% if page.previous.url %}
+    {% if page.previous.url %}   {% comment %} <!-- 만약 이전 페이지(포스트) url이 존재한다면, 이전 페이지 이미지, 제목, 화살표 아이콘, 링크, 설명 넣음 --> {% endcomment %}
     <div class="prev">
       <a class="post__nav__image" href="{{ site.baseurl }}{{page.previous.url}}" style="background-image: url({{site.baseurl}}/images/{{page.previous.image}})"></a>
       <h2 class="post__nav__title">
@@ -92,7 +92,7 @@ layout: default
         <a href="{{ site.baseurl }}{{page.previous.url}}">{{page.previous.title}}</a>
       </h2>
       <p class="prev__excerpt">
-        {% if page.previous.description %}
+        {% if page.previous.description %}   {% comment %} <!-- 만약 이전 페이지에 description이 있다면 그걸 쓰고, 아니면 content에서 html 문법 빼고 110 문자로 설명  --> {% endcomment %}
           {{ page.previous.description }}
         {% else %}
           {{ page.previous.content | strip_html | truncate: 110 }}
@@ -120,5 +120,6 @@ layout: default
     {% endif %}
   </div>
 
+  {% comment %} <!-- disqus 사용해서 댓글 기능 넣을 수 있는 부분. disqus-comments.html 포함하면 됨 --> {% endcomment %}
   {% if site.data.settings.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
   </div>
